@@ -19,3 +19,5 @@ create table tarea
    CONSTRAINT tarea_id PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES users(id)
 )
+
+***
