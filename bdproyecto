@@ -1,0 +1,21 @@
+﻿CREATE TABLE users
+(
+  id serial NOT NULL,
+  email character varying(100) NOT NULL,
+  password character varying(100) NOT NULL,
+  remember_token character varying(100),
+  CONSTRAINT users_pkey PRIMARY KEY (id)
+)
+
+
+create table tarea 
+(
+   id serial not null,
+   titulo varchar (1000) not null,
+   descripcion varchar (10000)not null,
+   prioridad varchar (100)not null,
+   id_user int not null,
+   estado varchar (100)not null,
+   CONSTRAINT tarea_id PRIMARY KEY (id),
+    FOREIGN KEY (id_user) REFERENCES users(id)
+)
