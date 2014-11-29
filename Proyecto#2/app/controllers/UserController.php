@@ -33,7 +33,7 @@ class UserController extends \BaseController {
 
 
             
-            return Redirect::to('tareas');
+            return Redirect::to('tasks');
         } else {
             // validation not successful, send back to form
             return Redirect::to('login')->withErrors(array('invalid_credentials' => 'Acceso Denegado'));
@@ -66,7 +66,7 @@ class UserController extends \BaseController {
 		$user->save();
 		//$id_usuario = $user->id;
 		Auth::attempt(array('email' => $email, 'password' => $password));
-		return Redirect::to('tareas');
+		return Redirect::to('tasks');
 	}
 
 	public function logout()

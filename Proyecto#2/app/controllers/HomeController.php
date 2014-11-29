@@ -22,13 +22,13 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		$id = Auth::user()->id;
-       $tareas = Tarea::tareasDisponibles($id);
+		$id = Auth::user()->id;  //Toma el ID del usuario logeado 
+       $tareas = Task::tareasDisponibles($id); //COnsulta en el modelo Tarea que trae las tareas disponibles para el usuario logeado de la BD
 
 		$this->layout->titulo = 'Listado de tareas';
 		$this->layout->nest(
 			'content',
-			'tareas',
+			'tasks',
 			array(
 				'tareas' => $tareas
 			)
@@ -37,21 +37,11 @@ class HomeController extends BaseController {
 		//$this->layout->nest('content', 'tareas1');
 	}
 
-    public function tareasAjax()
-	{
-       $id = Auth::user()->id;
-       $tareas = Tarea::tareasDisponibles($id);
-	   //var_dump($tareas);
-      
-       return Response::Json($tareas);
-	}
-
-
 		public function destroy($id)
 	{
-		$tarea = Tarea::find($id);
-		$tarea->delete();
-		return Redirect::to('tareas');
+		$tarea = Task::find($id); //busca la tarea que tenga el ID deseado en la BD
+		$tarea->delete(); //elimina la atrea 
+		return Redirect::to('tasks'); // redirecciona
 	}
 
 	public function create()
@@ -59,7 +49,7 @@ class HomeController extends BaseController {
 		$this->layout->titulo = 'Crear Tarea';
 		$this->layout->nest(
 			'content',
-			'tareas.create',
+			'tasks.create',
 			array()
 		);
 	}
@@ -72,41 +62,41 @@ class HomeController extends BaseController {
 	 */
 	public function store()
 	{
-		$titulo = Input::get('titulo');
-		$prioridad= Input::get('prioridad');
-		$descripcion = Input::get('descripcion');
-		$estado = 'nueva';
-		$id_user = Auth::user()->id;
+		$titulo = Input::get('titulo');//obtenemos el titulo de la tarea
+		$prioridad= Input::get('prioridad');//obtenemos la prioridad deseada 
+		$descripcion = Input::get('descripcion');//obtenemos la descripcion de la tarea
+		$estado = 'nueva';// el estado siempre va a comenzar en Nueva
+		$id_user = Auth::user()->id;//obtenemos el id del usuario logeado
 
-		$tarea = new Tarea();
+		$tarea = new Task();//crea una nueva tarea
 		$tarea->titulo = $titulo;
 		$tarea->prioridad = $prioridad;
 		$tarea->descripcion = $descripcion;
 		$tarea->estado = $estado;
 		$tarea->id_user = $id_user;
-		$tarea->save();
-		return Redirect::to('tareas');
+		$tarea->save(); // guardamos en la BD la tarea nueva
+		return Redirect::to('tasks');
 	}
 
 	public function cambiarEstado()
 	{
-		$id = Input::get('id');
-		$estado = Input::get('estado');
+		$id = Input::get('id'); //tomamo el id de la tarea pasado por ajax 
+		$estado = Input::get('estado');//tomamo el estado del contenedor de drack and drop por ajax
 
 
-        $tarea = Tarea::find($id);
-		$tarea->estado = $estado;
-		$tarea->save();
+        $tarea = Task::find($id); //buscamos la tarea por el id
+		$tarea->estado = $estado;//cambiamos el estado
+		$tarea->save();//se guardan los cambios echos
 		return Response::Json("hola");
 	}
 
 		public function edit($id)
 	{
 		$this->layout->titulo = 'Editar Tarea';
-		$tarea = Tarea::find($id);
+		$tarea = Task::find($id);
 		$this->layout->nest(
 			'content',
-			'tareas.edit',
+			'tasks.edit',
 			array(
 				'tarea' => $tarea
 			)
@@ -132,7 +122,7 @@ class HomeController extends BaseController {
 		$tarea->descripcion = $descripcion;
 		$tarea->save();
 
-		return Redirect::to('tareas');
+		return Redirect::to('tasks');
 
 	}
 

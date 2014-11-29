@@ -1,6 +1,6 @@
 <?php
 
-class Tarea extends Eloquent
+class Task extends Eloquent
 {
 	protected $table = 'tarea';
 	protected $fillable = array('titulo', 'descripcion', 'prioridad','id_user','estado');

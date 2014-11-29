@@ -1,0 +1,97 @@
+body
+{
+font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#board
+{
+width: 910px;
+min-height:100px;
+
+position:relative;
+}
+
+.title
+{
+background-color:#f7f5f5;
+text-align:center;
+color:black;
+
+border: 1px solid #999;
+padding: 10px 20px;
+text-align:left;
+}
+
+#enprogreso
+{
+left:302px;
+}
+
+#terminada
+{
+left:604px;
+}
+
+#verificada
+{
+left:908px;
+}
+
+#nueva, #enprogreso,#terminada,#verificada
+{
+	/*background-color: tan;*/
+	background-color: #f7f5f5;
+	position: absolute;
+	width: 300px;
+	min-height: 600px;
+	border: 1px solid #999;
+}
+
+*[draggable=true]
+{
+	float: left;
+	min-width: 50px;
+	min-height: 50px;
+	border: 1px solid #CCC;
+	margin: 10px;
+	font-weight: bold;
+	min-height: 60px;
+	/*background-image: -webkit-gradient(linear,
+             left top, left bottom,
+color-stop(0.63, white),
+             color-stop(0.92, rgb(5,161,245)));
+                    background-image:-moz-linear-gradient(
+                        center top,
+                        white 63%,
+                        rgb(5,161,245) 92%
+                    );
+				*/
+			/*para Firefox*/
+	-moz-border-radius: 15px 15px 15px 15px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 15px 15px 15px 15px;
+	/* para Opera */
+	border-radius: 15px 15px 15px 15px;
+	-webkit-background-size: 1px 8px;
+	-moz-background-size: 1px 8px;
+	background-size: 1px 8px;
+	background-repeat: repeat;
+	width: 90%;
+	background-color:#FFF;
+}
+
+.cardTitle
+{
+	padding:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#CCC;
+	font-size:12px;
+	
+/*background-color: rgb(255,255,255);
+border:2px solid white;
+*/}
+.red
+{background-color:#FF0033}
+.green
+{background-color:#00CC33}
+.yellow
+{background-color:#CCFF33}

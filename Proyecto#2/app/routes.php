@@ -21,9 +21,14 @@ Route::get('auth', 'UserController@isLogged');
 //Route::get('publica', 'HomeController@publica');
 
 Route::group(array('before' => 'auth'), function () {
-   Route::resource('tareas', 'HomeController');
-   Route::get('tareas/create', 'HomeController@create');
+   Route::resource('tasks', 'HomeController');
+   Route::get('tasks/create', 'HomeController@create');
 
+   Route::get('tasks/{id}/edit', 'HomeController@edit');
+   Route::post('tasks/{id}/update', 'HomeController@update');
 
+   Route::get('tasks/{id}/delete', 'HomeController@destroy');
+
+   Route::get('cambiarEstado', 'HomeController@cambiarEstado');
 
 });
