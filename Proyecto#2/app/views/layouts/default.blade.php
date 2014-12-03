@@ -8,8 +8,8 @@
 <body>
 	<?php
 		if (Auth::check()) {
-			echo "<a href='logout'>Cerrar Session</a>";
-			echo "<h3>Usuario Logueado :".Auth::user()->email."</h3>";
+			echo "<a style='font-size: 19px;' href='/logout'>Cerrar Session</a>";
+			echo "<h3 style='font-size: 20px; color:white'>Usuario Logueado :".Auth::user()->email."</h3>";
 		}
 	?>
 

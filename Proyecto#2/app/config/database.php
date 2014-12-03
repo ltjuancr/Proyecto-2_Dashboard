@@ -66,9 +66,9 @@ return array(
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'login',
+			'database' => 'Dashboard',
 			'username' => 'postgres',
-			'password' => '1243',
+			'password' => '12345',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',

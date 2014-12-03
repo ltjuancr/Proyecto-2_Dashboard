@@ -87,7 +87,7 @@ class HomeController extends BaseController {
         $tarea = Task::find($id); //buscamos la tarea por el id
 		$tarea->estado = $estado;//cambiamos el estado
 		$tarea->save();//se guardan los cambios echos
-		return Response::Json("hola");
+		return Response::Json("");
 	}
 
 		public function edit($id)
@@ -116,7 +116,7 @@ class HomeController extends BaseController {
 		$prioridad= Input::get('prioridad');
 		$descripcion = Input::get('descripcion');
 
-		$tarea = Tarea::find($id);
+		$tarea = Task::find($id);
 		$tarea->titulo = $titulo;
 		$tarea->prioridad = $prioridad;
 		$tarea->descripcion = $descripcion;

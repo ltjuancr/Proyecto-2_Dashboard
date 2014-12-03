@@ -55,7 +55,7 @@ class UserController extends \BaseController {
        $confirm = Input::get('confirm');
 
 		if($password != $confirm){
-          return Redirect::to('registro'); 
+          return Redirect::to('registro')->withErrors(array('invalid_credentials' => 'Su contraseña debe ser igual a la de confirmación'));
 
 		}
 		$email = Input::get('email');
